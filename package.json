@@ -1,0 +1,27 @@
+{
+  "name": "graphql---graphiql-query-mutation-",
+  "version": "1.0.0",
+  "description": "Api queries using GraphQL and GraphiQL client",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jef777/Graphql---GraphiQL-Query-Mutation-.git"
+  },
+  "author": "jeff777",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jef777/Graphql---GraphiQL-Query-Mutation-/issues"
+  },
+  "homepage": "https://github.com/jef777/Graphql---GraphiQL-Query-Mutation-#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
