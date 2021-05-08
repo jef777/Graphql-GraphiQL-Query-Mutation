@@ -202,6 +202,22 @@ const RootQueryType = new GraphQLObjectType({
             description: 'A list of all comments',
             resolve: () => comments,
         },
+        comment: {
+            type: CommentType,
+            description: 'A single comment',
+            args: {
+                id: { type: GraphQLInt}
+            },
+            resolve: (parent, args) => comments.find(comment => comment.id === args.id)
+        },
+        post: {
+            type: PostType,
+            description: 'A single Post',
+            args: {
+                id: { type: GraphQLInt}
+            },
+            resolve: (parent, args) => posts.find(post => post.id === args.id)
+        },
     }),
 })
 
