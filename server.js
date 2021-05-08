@@ -221,9 +221,50 @@ const RootQueryType = new GraphQLObjectType({
     }),
 })
 
+const RootMutationType = new GraphQLObjectType({
+    name: 'Mutation',
+    description: 'Root mutation',
+    fields: () => ({
+        addNewComment: {
+            type: CommentType,
+            description: 'Add a new comment',
+            args: {
+                name: {type: GraphQLNonNull(GraphQLString)},
+                postId: {type: GraphQLNonNull(GraphQLInt)}
+            },
+            resolve: (parent, args) => {
+                const comment = {
+                    id: comments.length + 1,
+                    name: args.name,
+                    postId: args.postId
+                };
+                comments.push(comment)
+                return comment;
+            }
+        },
+        addNewPost: {
+            type: PostType,
+            description: 'Add a new comment post',
+            args: {
+                name: {type: GraphQLNonNull(GraphQLString)}
+            },
+            resolve: (parent, args) => {
+                const post = {
+                    id: posts.length + 1,
+                    name: args.name,
+                };
+                posts.push(post)
+                return post;
+            }
+        },
+
+    })
+})
+
 
 const schema = new GraphQLSchema({
-    query: RootQueryType
+    query: RootQueryType,
+    mutation: RootMutationType
 })
 
 app.use('/graphql', graphqlHTTP({
