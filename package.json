@@ -4,7 +4,7 @@
   "description": "Api queries using GraphQL and GraphiQL client",
   "main": "server.js",
   "scripts": {
-    "devStart": "server.js"
+    "devStart": "nodemon server.js"
   },
   "repository": {
     "type": "git",
