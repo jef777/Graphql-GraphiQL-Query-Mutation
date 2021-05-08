@@ -170,6 +170,24 @@ const PostType = new GraphQLObjectType({
     })
 })
 
+const CommentType = new GraphQLObjectType({
+    name: 'comment',
+    description: 'Comment post',
+    fields: () => ({
+        id: { type: GraphQLNonNull(GraphQLInt) },
+        name: { type: GraphQLNonNull(GraphQLString) },
+        email: { type: GraphQLNonNull(GraphQLString) },
+        comment: { type: GraphQLNonNull(GraphQLString) },
+        postId: { type: GraphQLNonNull(GraphQLInt) },
+        post: {
+            type: PostType,
+            resolve: (comment) => {
+                return posts.find(post => post.id === comment.postId)
+            }
+        }
+    })
+})
+
 const RootQueryType = new GraphQLObjectType({
     name: 'query',
     description: 'Root Query for the posts',
@@ -178,6 +196,11 @@ const RootQueryType = new GraphQLObjectType({
             type: new GraphQLList(PostType),
             description: 'A list of all posts',
             resolve: () => posts,
+        },
+        comments: {
+            type: new GraphQLList(CommentType),
+            description: 'A list of all comments',
+            resolve: () => comments,
         },
     }),
 })
