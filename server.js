@@ -212,7 +212,7 @@ const RootQueryType = new GraphQLObjectType({
         },
         post: {
             type: PostType,
-            description: 'A single Post',
+            description: 'A single Post by me',
             args: {
                 id: { type: GraphQLInt}
             },
